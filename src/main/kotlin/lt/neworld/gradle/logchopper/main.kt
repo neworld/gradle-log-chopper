@@ -8,11 +8,22 @@ import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) = mainBody {
     ArgParser(args).parseInto(::Args).run {
-        val time = measureTimeMillis {
-            Processor(file, output).run()
+
+        val time2 = measureTimeMillis {
+            (1..50).forEach {
+                ProcessorSingleProcess(file, output).run()
+            }
         }
 
-        println("Chopped in $time ms")
+        println("Chopped coroutines in $time2 ms")
+
+        val time = measureTimeMillis {
+            (1..50).forEach {
+                Processor(file, output).run()
+            }
+        }
+
+        println("Chopped coroutines in $time ms")
     }
 }
 

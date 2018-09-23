@@ -20,7 +20,7 @@ class Test {
             test(testDir.name) {
                 val input = File(testDir, INPUT_FILE)
                 val output = temporaryFolder.folder
-                Processor(input, output).run()
+                ProcessorSingleProcess(input, output).run()
 
                 testDir.listFiles().filter(::filterNonTestFiles).forEach {
                     val fileName = it.name
