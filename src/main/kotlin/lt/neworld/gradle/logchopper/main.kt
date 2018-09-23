@@ -4,10 +4,15 @@ import com.xenomachina.argparser.ArgParser
 import com.xenomachina.argparser.default
 import com.xenomachina.argparser.mainBody
 import java.io.File
+import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) = mainBody {
     ArgParser(args).parseInto(::Args).run {
-        Processor(file, output).run()
+        val time = measureTimeMillis {
+            Processor(file, output).run()
+        }
+
+        println("Chopped in $time ms")
     }
 }
 
@@ -15,10 +20,20 @@ class Args(parser: ArgParser) {
     val output: File by parser.storing(
             "-o", "--output",
             help = "Output dir",
-            transform = { File(this) }
+            transform = { resolveFile(this) }
     ).default(File("out"))
 
     val file: File by parser.positional("INPUT", "Gradle log output.") {
-        File(this)
+        resolveFile(this)
+    }
+
+    private fun resolveFile(path: String): File {
+        val realPath = if (path.startsWith("~")) {
+            System.getProperty("user.home") + path.drop(1)
+        } else {
+            path
+        }
+
+        return File(realPath)
     }
 }

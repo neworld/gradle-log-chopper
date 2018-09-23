@@ -6,6 +6,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
 import java.io.InputStream
 import java.io.OutputStream
+import java.io.PipedInputStream
 import java.io.PipedOutputStream
 
 class Splitter {
@@ -20,9 +21,9 @@ class Splitter {
 
     private suspend fun process(input: InputStream, channel: Channel<ChunkMetaData>) {
         suspend fun createNewChunk(name: String): OutputStream {
-            println("Create new chunk: $name")
-            val outputStream = PipedOutputStream()
-            channel.send(ChunkMetaData(name, outputStream))
+            val inputStream = PipedInputStream()
+            val outputStream = PipedOutputStream(inputStream)
+            channel.send(ChunkMetaData(name, inputStream))
             return outputStream
         }
 
@@ -35,12 +36,9 @@ class Splitter {
                 currentOutput = createNewChunk(name)
             }
 
-            println("Write a line to output")
             currentOutput.write(line.toByteArray())
             currentOutput.write("\n".toByteArray())
-            println("line processing done")
         }
-        println("file processing done")
         currentOutput.close()
         channel.close()
     }
