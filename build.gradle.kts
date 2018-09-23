@@ -1,9 +1,18 @@
-import org.jetbrains.kotlin.gradle.dsl.Coroutines
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+buildscript {
+    repositories {
+        maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.0-rc-57")
+    }
+}
 
 plugins {
-    kotlin("jvm") version "1.2.61"
     application
+}
+
+apply {
+    plugin("kotlin")
 }
 
 group = "lt.neworld.gradle"
@@ -12,10 +21,12 @@ version = "0.0.1"
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
+    maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    maven("https://dl.bintray.com/kotlin/kotlinx")
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.0-rc-57")
     implementation("com.xenomachina:kotlin-argparser:${Versions.kotlinArgParser}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
 
@@ -34,18 +45,10 @@ tasks {
 }
 
 application {
-    mainClassName = "lt.neworld.gradle.logparser.MainKt"
+    mainClassName = "lt.neworld.gradle.logchopper.MainKt"
 }
 
 tasks.withType<Jar> {
     manifest.attributes.put("Main-Class", application.mainClassName)
     from(configurations.compile.map { if (it.isDirectory) it else zipTree(it) })
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-kotlin {
-    experimental.coroutines = Coroutines.ENABLE
 }

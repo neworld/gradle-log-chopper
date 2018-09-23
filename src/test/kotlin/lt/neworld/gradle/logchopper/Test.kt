@@ -1,4 +1,4 @@
-package lt.neworld.gradle.logparser
+package lt.neworld.gradle.logchopper
 
 import lt.neworld.kupiter.testFactory
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.RegisterExtension
 import java.io.File
 
 class Test {
-    val testData = File("src/test/testData")
+    private val testData = File("src/test/testData")
 
     @RegisterExtension
     @JvmField
@@ -36,7 +36,7 @@ class Test {
                 }
 
                 assertTrue(allUnwantedFiles.isEmpty()) {
-                    "Founted: " + allUnwantedFiles.map { it.name } + "\n"
+                    "Founded: " + allUnwantedFiles.map { it.name } + "\n"
                     "Content: \n\n" + allUnwantedFiles.map { it.name + ":\n" + it.readText() + "\n\n-------------\n" }
                 }
             }
@@ -48,6 +48,6 @@ class Test {
     private fun filterNonTestFiles(file: File) = filterNonTestFiles(file.name)
 
     companion object {
-        private val INPUT_FILE = "input.txt"
+        private const val INPUT_FILE = "input.txt"
     }
 }

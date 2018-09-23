@@ -1,8 +1,9 @@
-package lt.neworld.gradle.logparser
+package lt.neworld.gradle.logchopper
 
-import kotlinx.coroutines.experimental.channels.Channel
-import kotlinx.coroutines.experimental.launch
-import kotlinx.coroutines.experimental.newSingleThreadContext
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.newSingleThreadContext
 import java.io.InputStream
 import java.io.OutputStream
 import java.io.PipedOutputStream
@@ -11,10 +12,9 @@ class Splitter {
     suspend fun split(input: InputStream): Channel<ChunkMetaData> {
         val channel = Channel<ChunkMetaData>()
 
-        launch(context = newSingleThreadContext("Splitter")) {
+        GlobalScope.launch(context = newSingleThreadContext("Splitter")) {
             process(input, channel)
         }
-
         return channel
     }
 

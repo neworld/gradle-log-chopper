@@ -1,11 +1,10 @@
-package lt.neworld.gradle.logparser
+package lt.neworld.gradle.logchopper
 
-import kotlinx.coroutines.experimental.runBlocking
-import java.io.BufferedReader
+import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.io.PipedInputStream
 
-class Processor(val input: File, val output: File) {
+class Processor(private val input: File, private val output: File) {
     fun run() {
         val inputStream = input.inputStream()
         val splitter = Splitter()

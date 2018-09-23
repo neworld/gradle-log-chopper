@@ -1,10 +1,9 @@
-package lt.neworld.gradle.logparser
+package lt.neworld.gradle.logchopper
 
 import org.junit.jupiter.api.extension.AfterEachCallback
 import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 import java.io.File
-import java.io.IOException
 
 class TemporaryFolderExtension : BeforeEachCallback, AfterEachCallback {
     lateinit var folder: File
