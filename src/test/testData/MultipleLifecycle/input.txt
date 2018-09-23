@@ -1,0 +1,18 @@
+16:16:44.559 [DEBUG] [org.gradle.internal.resources.AbstractTrackedResourceLock] Task worker for ':buildSrc' Thread 5: acquired lock on :buildSrc
+16:16:44.559 [DEBUG] [org.gradle.internal.work.DefaultWorkerLeaseService] Worker lease root.1.9.50 started (1 worker(s) in use).
+16:16:44.559 [DEBUG] [org.gradle.internal.resources.AbstractTrackedResourceLock] Task worker for ':buildSrc' Thread 5: acquired lock on root.1.9.50
+16:16:44.559 [INFO] [org.gradle.execution.taskgraph.DefaultTaskPlanExecutor] :buildSrc:processResources (Thread[Task worker for ':buildSrc' Thread 5,5,main]) started.
+16:16:44.559 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger]
+16:16:44.559 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] > Task :buildSrc:processResources UP-TO-DATE
+16:16:44.559 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationExecutor] Build operation 'Task :buildSrc:processResources' started
+16:16:44.559 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':buildSrc:processResources'
+16:16:44.567 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] > Task :buildSrc:inspectClassesForKotlinIC UP-TO-DATE
+16:16:44.567 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationExecutor] Build operation 'Task :buildSrc:inspectClassesForKotlinIC' started
+16:16:44.568 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':buildSrc:inspectClassesForKotlinIC'
+16:16:44.568 [DEBUG] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Putting task artifact state for task ':buildSrc:inspectClassesForKotlinIC' into context took 0.0 secs.
+16:16:44.568 [DEBUG] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Determining if task ':buildSrc:inspectClassesForKotlinIC' is up-to-date
+16:16:44.569 [DEBUG] [org.gradle.api.internal.changedetection.state.CacheBackedTaskHistoryRepository] Implementation for task ':buildSrc:inspectClassesForKotlinIC': org.jetbrains.kotlin.gradle.tasks.InspectClassesForMultiModuleIC_Decorated@e53809b6f07012f47edce47376256d73
+16:16:44.569 [DEBUG] [org.gradle.api.internal.changedetection.state.CacheBackedTaskHistoryRepository] Action implementations for task ':buildSrc:inspectClassesForKotlinIC': [org.jetbrains.kotlin.gradle.tasks.InspectClassesForMultiModuleIC_Decorated@e53809b6f07012f47edce47376256d73]
+16:16:44.569 [DEBUG] [org.gradle.api.internal.changedetection.state.CacheBackedTaskHistoryRepository] Fingerprinting property classFiles$kotlin_gradle_plugin (AbsolutePathInput) for task ':buildSrc:inspectClassesForKotlinIC'
+16:16:44.571 [DEBUG] [org.gradle.api.internal.changedetection.state.CacheBackedTaskHistoryRepository] Fingerprinting property classesListFile$kotlin_gradle_plugin (Output) for task ':buildSrc:inspectClassesForKotlinIC'
+16:16:44.572 [INFO] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Skipping task ':buildSrc:inspectClassesForKotlinIC' as it is up-to-date.

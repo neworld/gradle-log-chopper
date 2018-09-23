@@ -1,0 +1,5 @@
+16:16:44.559 [DEBUG] [org.gradle.internal.resources.AbstractTrackedResourceLock] Task worker for ':buildSrc' Thread 5: acquired lock on :buildSrc
+16:16:44.559 [DEBUG] [org.gradle.internal.work.DefaultWorkerLeaseService] Worker lease root.1.9.50 started (1 worker(s) in use).
+16:16:44.559 [DEBUG] [org.gradle.internal.resources.AbstractTrackedResourceLock] Task worker for ':buildSrc' Thread 5: acquired lock on root.1.9.50
+16:16:44.559 [INFO] [org.gradle.execution.taskgraph.DefaultTaskPlanExecutor] :buildSrc:processResources (Thread[Task worker for ':buildSrc' Thread 5,5,main]) started.
+16:16:44.559 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger]

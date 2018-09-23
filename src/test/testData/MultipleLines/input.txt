@@ -1,0 +1,5 @@
+16:16:34.492 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+16:16:34.492 [INFO] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Removing 0 daemon stop events from registry
+16:16:34.493 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+16:16:34.494 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+16:16:34.496 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.

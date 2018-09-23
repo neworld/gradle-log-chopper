@@ -1,0 +1,3 @@
+16:16:44.559 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] > Task :buildSrc:processResources UP-TO-DATE
+16:16:44.559 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationExecutor] Build operation 'Task :buildSrc:processResources' started
+16:16:44.559 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':buildSrc:processResources'
