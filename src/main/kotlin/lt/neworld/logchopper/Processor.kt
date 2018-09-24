@@ -1,4 +1,4 @@
-package lt.neworld.gradle.logchopper
+package lt.neworld.logchopper
 
 import kotlinx.coroutines.runBlocking
 import java.io.File

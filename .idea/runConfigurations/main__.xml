@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="main()" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="lt.neworld.gradle.logchopper.MainKt" />
+    <option name="MAIN_CLASS_NAME" value="lt.neworld.logchopper.MainKt" />
     <module name="logchopper_main" />
     <option name="PROGRAM_PARAMETERS" value="-o ~/tmp/out" />
     <method v="2">

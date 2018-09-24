@@ -1,4 +1,4 @@
-package lt.neworld.gradle.logchopper
+package lt.neworld.logchopper
 
 import org.junit.jupiter.api.extension.AfterEachCallback
 import org.junit.jupiter.api.extension.BeforeEachCallback

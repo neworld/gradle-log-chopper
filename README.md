@@ -6,13 +6,13 @@ This tool chops huge gradle debug log into smaller pieces by tasks.
 
 ```
 ./gradlew build --debug > hugelog.txt
-gradle-log-chopper -o firewood/ hugelog.txt
+logchopper -o firewood/ hugelog.txt
 ```
 
 or you could chop log via pipe:
 
 ```
-./gradlew build --debug | gradle-log-chopper
+./gradlew build --debug | logchopper
 ```
 
 Chopped files are prefixed with index and named by task name:

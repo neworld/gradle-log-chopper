@@ -15,7 +15,7 @@ apply {
     plugin("kotlin")
 }
 
-group = "lt.neworld.gradle"
+group = "lt.neworld.logchopper"
 version = "0.0.1"
 
 repositories {
@@ -45,7 +45,7 @@ tasks {
 }
 
 application {
-    mainClassName = "lt.neworld.gradle.logchopper.MainKt"
+    mainClassName = "lt.neworld.logchopper.MainKt"
 }
 
 tasks.withType<Jar> {

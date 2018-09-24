@@ -1,4 +1,4 @@
-package lt.neworld.gradle.logchopper
+package lt.neworld.logchopper
 
 import java.io.InputStream
 import java.io.PipedOutputStream

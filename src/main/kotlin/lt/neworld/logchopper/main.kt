@@ -1,4 +1,4 @@
-package lt.neworld.gradle.logchopper
+package lt.neworld.logchopper
 
 import com.xenomachina.argparser.ArgParser
 import com.xenomachina.argparser.DefaultHelpFormatter
@@ -8,9 +8,9 @@ import java.io.File
 import java.io.InputStream
 import kotlin.system.measureTimeMillis
 
-fun main(args: Array<String>) = mainBody(programName = "gradle-logchopper") {
+fun main(args: Array<String>) = mainBody(programName = "logchopper") {
     val help = DefaultHelpFormatter(
-            prologue = "Example: ./gradlew build --debug > gradle-logchopper"
+            prologue = "Example: ./gradlew build --debug > logchopper"
     )
 
     ArgParser(args, helpFormatter = help).parseInto(::Args).run {

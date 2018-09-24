@@ -1,4 +1,4 @@
-package lt.neworld.gradle.logchopper
+package lt.neworld.logchopper
 
 import lt.neworld.kupiter.testFactory
 import org.junit.jupiter.api.Assertions.assertEquals
