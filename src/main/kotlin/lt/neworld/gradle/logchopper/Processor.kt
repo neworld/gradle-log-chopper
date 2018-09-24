@@ -3,7 +3,7 @@ package lt.neworld.gradle.logchopper
 import kotlinx.coroutines.runBlocking
 import java.io.File
 
-class Processor(private val input: File, private val output: File) {
+class Processor(private val input: File, private val output: File, val filter: String? = null) {
     fun run() {
         if (output.isFile) {
             throw IllegalArgumentException("output ${output.path} is file")
@@ -12,7 +12,7 @@ class Processor(private val input: File, private val output: File) {
         output.mkdirs()
 
         val inputStream = input.inputStream()
-        val splitter = Splitter()
+        val splitter = Splitter(filter)
         runBlocking {
             var index = 0
             for (chunk in splitter.split(inputStream)) {

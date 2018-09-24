@@ -9,7 +9,7 @@ import kotlin.system.measureTimeMillis
 fun main(args: Array<String>) = mainBody {
     ArgParser(args).parseInto(::Args).run {
         val time = measureTimeMillis {
-            Processor(file, output).run()
+            Processor(file, output, filter).run()
         }
 
         println("Chopped in $time ms")
@@ -17,6 +17,11 @@ fun main(args: Array<String>) = mainBody {
 }
 
 class Args(parser: ArgParser) {
+    val filter: String? by parser.storing(
+            "-f", "--filter",
+            help = "Output logs filtered by given text"
+    ).default(null as String?)
+
     val output: File by parser.storing(
             "-o", "--output",
             help = "Output dir",

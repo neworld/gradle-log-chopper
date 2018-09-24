@@ -1,15 +1,15 @@
 package lt.neworld.gradle.logchopper
 
 import lt.neworld.kupiter.testFactory
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
-import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.extension.RegisterExtension
 import java.io.File
 
-class Test {
+class ProcessorTest {
     private val testData = File("src/test/testData")
 
     @RegisterExtension
@@ -46,6 +46,67 @@ class Test {
                     cleanup()
                 }
             }
+        }
+    }
+
+    @Nested
+    inner class Filter {
+        val input = File(testData, "MultipleLifecycle/input.txt")
+        val output by lazy { temporaryFolder.folder }
+
+        @Test
+        fun noFilter() {
+            Processor(input, output, filter = "").run()
+
+            val expected = setOf(
+                    "0000-default.txt",
+                    "0001-:buildSrc:processResources.txt",
+                    "0002-:buildSrc:inspectClassesForKotlinIC.txt"
+            )
+
+            val actual = output.listFiles().map { it.name }.toSet()
+
+            assertEquals(expected, actual)
+        }
+
+        @Test
+        fun withDefault() {
+            Processor(input, output, filter = "default").run()
+
+            val expected = setOf(
+                    "0000-default.txt"
+            )
+
+            val actual = output.listFiles().map { it.name }.toSet()
+
+            assertEquals(expected, actual)
+        }
+
+        @Test
+        fun withBuildSrc() {
+            Processor(input, output, filter = "buildSrc").run()
+
+            val expected = setOf(
+                    "0000-:buildSrc:processResources.txt",
+                    "0001-:buildSrc:inspectClassesForKotlinIC.txt"
+            )
+
+            val actual = output.listFiles().map { it.name }.toSet()
+
+            assertEquals(expected, actual)
+        }
+
+        @Test
+        fun matchCase() {
+            Processor(input, output, filter = "Resources").run()
+
+            val expected = setOf(
+                    "0000-:buildSrc:processResources.txt"
+            )
+
+            val actual = output.listFiles().map { it.name }.toSet()
+
+            assertEquals(expected, actual)
         }
     }
 
