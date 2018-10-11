@@ -1,3 +1,5 @@
+import lt.neworld.gradle.jdeploy.JDeployExtension
+
 buildscript {
     repositories {
         maven("https://dl.bintray.com/kotlin/kotlin-eap")
@@ -9,6 +11,7 @@ buildscript {
 
 plugins {
     application
+    id("lt.neworld.jdeploy") version "0.3.0"
 }
 
 apply {
@@ -16,7 +19,7 @@ apply {
 }
 
 group = "lt.neworld.logchopper"
-version = "0.0.1"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -51,4 +54,12 @@ application {
 tasks.withType<Jar> {
     manifest.attributes.put("Main-Class", application.mainClassName)
     from(configurations.compile.map { if (it.isDirectory) it else zipTree(it) })
+}
+
+configure<JDeployExtension> {
+    name = "gradle-logchopper"
+    author = "Andrius Semionovas"
+    description = "CLI tool to split long gradle debug log by tasks"
+    license = "Apache-2.0"
+    repository = "https://github.com/neworld/logchopper"
 }
