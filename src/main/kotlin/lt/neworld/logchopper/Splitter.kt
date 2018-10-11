@@ -17,7 +17,7 @@ class Splitter(private val filter: String?) {
     }
 
     suspend fun split(input: InputStream): Channel<ChunkMetaData> {
-        val channel = Channel<ChunkMetaData>()
+        val channel = Channel<ChunkMetaData>(16)
 
         GlobalScope.launch(context = newSingleThreadContext("Splitter")) {
             process(input, channel)
