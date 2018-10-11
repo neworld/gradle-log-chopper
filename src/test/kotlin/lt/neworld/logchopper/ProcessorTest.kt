@@ -21,7 +21,7 @@ class ProcessorTest {
         testData.listFiles().forEach { testDir ->
             test(testDir.name) {
                 try {
-                    val input = File(testDir, INPUT_FILE)
+                    val input = File(testDir, INPUT_FILE).inputStream()
                     val output = temporaryFolder.folder
                     Processor(input, output).run()
 
@@ -51,7 +51,7 @@ class ProcessorTest {
 
     @Nested
     inner class Filter {
-        val input = File(testData, "MultipleLifecycle/input.txt")
+        val input = File(testData, "MultipleLifecycle/input.txt").inputStream()
         val output by lazy { temporaryFolder.folder }
 
         @Test
