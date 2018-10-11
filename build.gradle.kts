@@ -39,13 +39,26 @@ dependencies {
     testImplementation("lt.neworld:kupiter:${Versions.kupiter}")
 }
 
+val fatJar = task("fatJar", type = Jar::class) {
+    baseName = "${project.name}-fat"
+    manifest {
+        attributes["Implementation-Version"] = version
+    }
+    from(configurations.runtimeClasspath.map { if (it.isDirectory) it else zipTree(it) })
+    with(tasks["jar"] as CopySpec)
+}
+
 tasks {
     "test"(Test::class) {
         reports {
             html.isEnabled = true
         }
     }
+    "build" {
+        dependsOn(fatJar)
+    }
 }
+
 
 application {
     mainClassName = "lt.neworld.logchopper.MainKt"
