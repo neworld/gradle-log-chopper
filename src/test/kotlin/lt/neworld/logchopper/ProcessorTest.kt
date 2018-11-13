@@ -108,6 +108,20 @@ class ProcessorTest {
 
             assertEquals(expected, actual)
         }
+
+        @Test
+        fun glob() {
+            Processor(input, output, filter = "build*:").run()
+
+            val expected = setOf(
+                    "0000-:buildSrc:processResources.txt",
+                    "0001-:buildSrc:inspectClassesForKotlinIC.txt"
+            )
+
+            val actual = output.listFiles().map { it.name }.toSet()
+
+            assertEquals(expected, actual)
+        }
     }
 
     private fun cleanup() {

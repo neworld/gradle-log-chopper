@@ -11,10 +11,12 @@ import java.io.PipedOutputStream
 import java.util.concurrent.Executors
 
 class Splitter(private val filter: String?) {
-    private fun eligible(input: String):Boolean {
-        if (filter == null || filter.isEmpty()) return true
+    private val filterPattern by lazy {
+        filter?.takeUnless(String::isEmpty)?.toGlobRegex()
+    }
 
-        return input.contains(filter)
+    private fun eligible(input: String): Boolean {
+        return filterPattern?.containsMatchIn(input) ?: true
     }
 
     suspend fun split(input: InputStream): Channel<ChunkMetaData> {

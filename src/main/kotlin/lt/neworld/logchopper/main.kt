@@ -25,7 +25,7 @@ fun main(args: Array<String>) = mainBody(programName = "logchopper") {
 class Args(parser: ArgParser) {
     val filter: String? by parser.storing(
             "-f", "--filter",
-            help = "Output logs filtered by given text"
+            help = "Output logs filtered by given text. Glob syntax is supported"
     ).default(null as String?)
 
     val output: File by parser.storing(
