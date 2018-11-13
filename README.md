@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/neworld/logchopper.svg?branch=master)](https://travis-ci.org/neworld/logchopper)
+[![GitHub release](https://img.shields.io/github/release/neworld/logchopper/all.svg)](https://github.com/neworld/logchopper)
+
 A large project could have more than a couple of hundred tasks and debug log could grow more than 40mb.
 It is not an easy task for log viewer or even developer himself.
 This tool chops huge gradle debug log into smaller pieces by tasks.
