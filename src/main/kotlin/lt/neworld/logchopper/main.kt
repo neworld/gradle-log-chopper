@@ -1,5 +1,6 @@
 package lt.neworld.logchopper
 
+import com.github.ajalt.mordant.TermColors
 import com.xenomachina.argparser.ArgParser
 import com.xenomachina.argparser.DefaultHelpFormatter
 import com.xenomachina.argparser.default
@@ -18,7 +19,9 @@ fun main(args: Array<String>) = mainBody(programName = "logchopper") {
             Processor(input, output.takeUnless { print }, filter).run()
         }
 
-        println("Chopped in $time ms")
+        with(TermColors()) {
+            println((gray + italic)("\nChopped in $time ms"))
+        }
     }
 }
 
