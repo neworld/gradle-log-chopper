@@ -1,35 +1,22 @@
 import lt.neworld.gradle.jdeploy.JDeployExtension
 
-buildscript {
-    repositories {
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
-    }
-    dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.0-rc-57")
-    }
-}
-
 plugins {
     application
+    kotlin("jvm") version "1.3.10"
     id("lt.neworld.jdeploy") version "0.4.0"
 }
 
-apply {
-    plugin("kotlin")
-}
-
 group = "lt.neworld.logchopper"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
-    maven("https://dl.bintray.com/kotlin/kotlin-eap")
     maven("https://dl.bintray.com/kotlin/kotlinx")
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.0-rc-57")
+    implementation(kotlin("stdlib-jdk8"))
     implementation("com.xenomachina:kotlin-argparser:${Versions.kotlinArgParser}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
 
@@ -41,6 +28,9 @@ dependencies {
 
 tasks {
     "test"(Test::class) {
+        useJUnitPlatform {
+
+        }
         reports {
             html.isEnabled = true
         }

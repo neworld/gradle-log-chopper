@@ -1,13 +1,14 @@
 package lt.neworld.logchopper
 
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.newSingleThreadContext
 import java.io.InputStream
 import java.io.OutputStream
 import java.io.PipedInputStream
 import java.io.PipedOutputStream
+import java.util.concurrent.Executors
 
 class Splitter(private val filter: String?) {
     private fun eligible(input: String):Boolean {
@@ -19,7 +20,7 @@ class Splitter(private val filter: String?) {
     suspend fun split(input: InputStream): Channel<ChunkMetaData> {
         val channel = Channel<ChunkMetaData>(16)
 
-        GlobalScope.launch(context = newSingleThreadContext("Splitter")) {
+        GlobalScope.launch(context = Executors.newSingleThreadExecutor().asCoroutineDispatcher()) {
             process(input, channel)
         }
         return channel
