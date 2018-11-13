@@ -50,7 +50,7 @@ tasks.withType<Jar> {
 }
 
 configure<JDeployExtension> {
-    name = "gradle-logchopper"
+    name = "logchopper"
     author = "Andrius Semionovas"
     description = "CLI tool to split long gradle debug log by tasks"
     license = "Apache-2.0"
