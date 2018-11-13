@@ -15,7 +15,7 @@ fun main(args: Array<String>) = mainBody(programName = "logchopper") {
 
     ArgParser(args, helpFormatter = help).parseInto(::Args).run {
         val time = measureTimeMillis {
-            Processor(input, output, filter).run()
+            Processor(input, output.takeUnless { print }, filter).run()
         }
 
         println("Chopped in $time ms")
@@ -23,6 +23,11 @@ fun main(args: Array<String>) = mainBody(programName = "logchopper") {
 }
 
 class Args(parser: ArgParser) {
+    val print: Boolean by parser.flagging(
+            "--print", "-p",
+            help = "Output to stdout instead of writing into files. Useful if you filter single lifecycle event"
+    )
+
     val filter: String? by parser.storing(
             "-f", "--filter",
             help = "Output logs filtered by given text. Glob syntax is supported"

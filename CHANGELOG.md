@@ -2,3 +2,4 @@
 
 - Update dependencies
 - Support glob syntax in filter
+- Support --print

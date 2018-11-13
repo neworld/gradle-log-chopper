@@ -11,6 +11,7 @@ version = "1.1.0"
 
 repositories {
     mavenCentral()
+    jcenter()
     maven("https://jitpack.io")
     maven("https://dl.bintray.com/kotlin/kotlinx")
 }
@@ -19,6 +20,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.xenomachina:kotlin-argparser:${Versions.kotlinArgParser}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}")
+    implementation("com.github.ajalt:mordant:${Versions.mordant}")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.junit5Version}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.junit5Version}")

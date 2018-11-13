@@ -124,6 +124,26 @@ class ProcessorTest {
         }
     }
 
+    @Nested
+    inner class Stdout {
+        val input = File(testData, "SimpleLine/input.txt").inputStream()
+
+        @RegisterExtension
+        @JvmField
+        val stdOutTracker = StdOutTrackerExtension()
+
+        @Test
+        fun simple() {
+            Processor(input, null).run()
+
+            val expected = File(testData, "SimpleLine/0000-default.txt").readText()
+            val actual = stdOutTracker.output.toString()
+
+            assertEquals("default:\n$expected", actual)
+        }
+    }
+
+
     private fun cleanup() {
         temporaryFolder.folder.deleteRecursively()
         temporaryFolder.folder.mkdir()
