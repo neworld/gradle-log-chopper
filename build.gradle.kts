@@ -3,7 +3,7 @@ import lt.neworld.gradle.jdeploy.JDeployExtension
 plugins {
     application
     kotlin("jvm") version "1.3.10"
-    id("lt.neworld.jdeploy") version "0.4.0"
+    id("lt.neworld.jdeploy") version "0.5.0"
 }
 
 group = "lt.neworld.logchopper"
@@ -50,7 +50,8 @@ tasks.withType<Jar> {
 }
 
 configure<JDeployExtension> {
-    name = "logchopper"
+    name = "gradle-logchopper"
+    binName = "logchopper"
     author = "Andrius Semionovas"
     description = "CLI tool to split long gradle debug log by tasks"
     license = "Apache-2.0"

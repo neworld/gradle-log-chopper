@@ -28,6 +28,14 @@ Chopped files are prefixed with index and named by task name:
 ...
 ```
 
+### Installation
+
+The program is distributed via [NPM](https://www.npmjs.com/package/gradle-logchopper).
+Installation:
+```sh
+npm i gradle-logchopper
+```
+
 ### License
 
 ```
